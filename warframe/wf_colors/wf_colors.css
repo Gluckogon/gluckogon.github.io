@@ -1,9 +1,10 @@
-#wf_color_palettes {
+#wf_colors {
     display: flex;
     background-color: #fff;
     color: #111;
+    padding: 5px;
 }
-#wf_color_palettes td {
+#wf_colors td {
     padding: 0;
 
 }
@@ -30,7 +31,7 @@
 .selected_palette_thumbnail {
     border: 1px solid #9b9b8d;
     border-radius: 5px;
-    background-color: #e3e3d6;
+    background-color: #ebeddc;
 }
 .palette_thumbnail_name {
     margin-bottom: 1px;
