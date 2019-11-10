@@ -13,8 +13,8 @@ const sel_col_cell_nodes = {
     'dupl_cell_node': null,
 }
 let selected_palette = null
-const pal_x_cells_num = 5
-const pal_y_cells_num = 18
+const pal_x_cells_num = palettes['Classic'][0].length
+const pal_y_cells_num = palettes['Classic'].length
 
 for (let [palette_name, palette] of Object.entries(palettes_w_ids)) {
     palettes_nodes[palette_name] = {}
@@ -81,11 +81,12 @@ for (let [cl_col_gr_name, cl_col_ids] of Object.entries(classified_colors)) {
 
     let color_picker_html_str = '<table class="color_picker">'
     let n = 0;
+    cp_sq_loop:
     for (let i = 0; i < color_picker_sq_side; i++) {
         color_picker_html_str += '<tr>'
         for (let j = 0; j < color_picker_sq_side; j++, n++) {
             if (n === cl_col_ids.length) {
-                break
+                break cp_sq_loop
             }
             color_picker_html_str +=
                 '<td id="pick_' + cl_col_ids[n] + '" ' +
