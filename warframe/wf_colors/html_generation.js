@@ -44,7 +44,7 @@ for (let [palette_name, palette] of Object.entries(palettes_w_ids)) {
     palette_container.style.display = 'none'
 
     let palette_html_str =
-        '<span class="palette_name">' + palette_name + '</span><br />' +
+        '<div class="palette_name">' + palette_name + '</div>' +
         '<table class="palette">'
     for (let i = 0; i < pal_y_cells_num; i++) {
         palette_html_str += '<tr>'
