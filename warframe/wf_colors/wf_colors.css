@@ -9,6 +9,7 @@
 }
 #wf_colors td {
     padding: 0;
+    text-shadow: #998 0 0 5px;
 }
 .wf_col_pick_block {
     padding: 7px;
