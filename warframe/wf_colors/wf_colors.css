@@ -48,7 +48,7 @@
 }
 .palette_thumbnail td {
     width: 4px;
-    height: 5px;
+    height: 4px;
     border: 1px solid #333;
 }
 
@@ -84,7 +84,7 @@
 }
 .palette td {
     width: 26px;
-    height: 28px;
+    height: 26px;
     border: 2px solid #222;
     text-align: center;
     vertical-align: middle;
@@ -111,7 +111,7 @@
 }
 .dublicates_table td {
     width: 10px;
-    height: 11px;
+    height: 10px;
     border: 1px solid #222;
     text-align: center;
     vertical-align: middle;
@@ -134,7 +134,7 @@
 }
 .color_picker td {
     width: 10px;
-    height: 11px;
+    height: 10px;
     border: 1px solid #222;
     text-align: center;
     vertical-align: middle;
