@@ -93,8 +93,8 @@ for (let [color, col_ids] of Object.entries(duplicates)) {
         delete duplicates[color]
     }
 }
-const sorted_dublicates = {}
+const sorted_duplicates = {}
 Object.keys(duplicates).sort().reverse().forEach(function (key) {
-    sorted_dublicates[key] = duplicates[key]
+    sorted_duplicates[key] = duplicates[key]
 })
-duplicates = sorted_dublicates
+duplicates = sorted_duplicates

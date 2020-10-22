@@ -5,8 +5,8 @@ const palettes_thumbnails_node = document.getElementById('palettes_thumbnails')
 const selected_palette_node = document.getElementById('selected_palette')
 const selected_color_node = document.getElementById('selected_color')
 const selected_color_text_node = document.getElementById('selected_color_value')
-const color_picker_node = document.getElementById('color_picker')
-const dublicates_container_node = document.getElementById('dublicates_container')
+const color_picker_node = document.getElementById('color_picker_list')
+const duplicates_container_node = document.getElementById('duplicates_container')
 const sel_col_cell_nodes = {
     'sel_pal_cell_node': null,
     'col_pick_cell_node': null,
@@ -63,18 +63,18 @@ for (let [palette_name, palette] of Object.entries(palettes_w_ids)) {
     palettes_nodes[palette_name].palette = palette_container
 }
 
-let color_dublicates_html_str = ''
+let color_duplicates_html_str = ''
 for (let [color, col_ids] of Object.entries(duplicates)) {
-    color_dublicates_html_str += '<table class="dublicates_table"><tr>'
+    color_duplicates_html_str += '<table class="duplicates_table"><tr>'
     for (let col_id of col_ids) {
-        color_dublicates_html_str +=
+        color_duplicates_html_str +=
             '<td id="dupl_' + col_id + '" ' +
             'style="background-color: ' + color + ';" ' +
             'onclick="select_color(' + col_id + ')"></td>'
     }
-    color_dublicates_html_str += '</tr></table>'
+    color_duplicates_html_str += '</tr></table>'
 }
-dublicates_container_node.innerHTML = color_dublicates_html_str
+duplicates_container_node.innerHTML = color_duplicates_html_str
 
 for (let [cl_col_gr_name, cl_col_ids] of Object.entries(classified_colors)) {
     const color_picker_sq_side = Math.ceil(Math.sqrt(cl_col_ids.length))
