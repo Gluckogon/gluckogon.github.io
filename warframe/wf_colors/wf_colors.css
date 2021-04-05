@@ -95,7 +95,7 @@
 }
 
 #color_picker_n_duplicates {
-    flex: 0 0 1000px;
+    /* flex: 0 0 1000px; */
 }
 #duplicates {
     margin-bottom: 15px;
