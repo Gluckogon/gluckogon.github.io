@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.label {
+    text-align: right;
+}
+
+input {
+    width: 150px;
+}
+</style>
+</head>
+<body>
+<div>
+
+</div>
+<table>
+    <tr>
+        <td class="label"><label for="crit_chance">Critical hit chance:</label></td>
+        <td><input id="crit_chance_expression" type="text" value="0.2*(1+2)" oninput="calc_crit_dps()" /></td>
+        <td><input id="crit_chance_calculated" type="number" disabled /></td>
+    </tr>
+    <tr>
+        <td class="label"><label for="crit_mult">Critical hit multiplier:</label></td>
+        <td><input id="crit_mult_expression" type="text" value="2*(1+1.2)" oninput="calc_crit_dps()" /></td>
+        <td><input id="crit_mult_calculated" type="number" disabled /></td>
+    </tr>
+    <tr>
+        <td class="label"><label for="dps_mult">Critical hit DPS:</label></td>
+        <td><input id="dps_mult" type="number" disabled /></td>
+        <td></td>
+    </tr>
+</table>
+
+<script>
+function crit_dps_warf(crit_chance, crit_mult)
+{
+	const non_crit_hits = (crit_chance < 1) ? 1 - crit_chance : 0
+	const crit_tier_base = Math.floor(crit_chance)
+	const crit_tier_next = Math.ceil(crit_chance)
+	const crit_tier_next_chance = crit_chance - crit_tier_base
+	const crit_tier_base_chance = 1 - crit_tier_next_chance
+	return (
+		non_crit_hits +
+		crit_tier_base_chance * crit_tier_base * crit_mult +
+		crit_tier_next_chance * crit_tier_next * crit_mult
+	)
+}
+
+Math.eval = function(str) {
+    const allowed_symbols = new Set(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '.', '(', ')', '+', '-', '*', '/', '%'])
+
+    for (const c of str) {
+        if (!c in allowed_symbols) {
+            return NaN
+        }
+    }
+
+    try {
+        return eval(str)
+    } catch (e) {
+        if (e.name === 'SyntaxError') {
+            return NaN
+        }
+        throw e
+    }
+}
+
+function round(num, ndigits) {
+    return Math.round((num + Number.EPSILON) * 10**ndigits) / 10**ndigits
+}
+
+function calc_crit_dps()
+{
+    const crit_chance = Math.eval(document.getElementById('crit_chance_expression').value)
+    const crit_mult = Math.eval(document.getElementById('crit_mult_expression').value)
+    const crit_dps_mult = crit_dps_warf(crit_chance, crit_mult)
+
+    document.getElementById('crit_chance_calculated').value = round(crit_chance, 2)
+    document.getElementById('crit_mult_calculated').value = round(crit_mult, 2)
+    document.getElementById('dps_mult').value = round(crit_dps_mult, 2)
+    //console.log('crit_dps_warf(' + crit_chance + ', ' + crit_mult + ') == ' + crit_dps_mult)
+}
+calc_crit_dps()
+</script>
+</body>
+</html>
