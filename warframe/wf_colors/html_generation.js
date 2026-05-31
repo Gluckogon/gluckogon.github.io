@@ -16,7 +16,7 @@ let selected_palette = null
 const pal_x_cells_num = palettes['Classic'][0].length
 const pal_y_cells_num = palettes['Classic'].length
 
-for (let [palette_name, palette] of Object.entries(palettes_w_ids)) {
+for (const [palette_name, palette] of Object.entries(palettes_w_ids)) {
     palettes_nodes[palette_name] = {}
     let palette_thumbnail_container = document.createElement('div')
     palette_thumbnail_container.classList.add('palette_thumbnail_container')
@@ -64,9 +64,9 @@ for (let [palette_name, palette] of Object.entries(palettes_w_ids)) {
 }
 
 let color_duplicates_html_str = ''
-for (let [color, col_ids] of Object.entries(duplicates)) {
+for (const [color, col_ids] of Object.entries(duplicates)) {
     color_duplicates_html_str += '<table class="duplicates_table"><tr>'
-    for (let col_id of col_ids) {
+    for (const col_id of col_ids) {
         color_duplicates_html_str +=
             '<td id="dupl_' + col_id + '" ' +
             'style="background-color: ' + color + ';" ' +
@@ -76,11 +76,11 @@ for (let [color, col_ids] of Object.entries(duplicates)) {
 }
 duplicates_container_node.innerHTML = color_duplicates_html_str
 
-for (let [cl_col_gr_name, cl_col_ids] of Object.entries(classified_colors)) {
+for (const [cl_col_gr_name, cl_col_ids] of Object.entries(classified_colors)) {
     const color_picker_sq_side = Math.ceil(Math.sqrt(cl_col_ids.length))
 
     let color_picker_html_str = '<table class="color_picker">'
-    let n = 0;
+    let n = 0
     cp_sq_loop:
     for (let i = 0; i < color_picker_sq_side; i++) {
         color_picker_html_str += '<tr>'
