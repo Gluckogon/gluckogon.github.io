@@ -1,5 +1,6 @@
 #wf_colors {
     display: flex;
+    max-width: 1900px;
     background-color: #fff;
     color: #111;
     padding: 5px;
@@ -20,8 +21,8 @@
 
 #palettes_thumbnails {
     display: table;
-    flex: 0 0 210px;
-    width: 210px;  /* firefox */
+    flex: 0 0 212px;  /* originally 210, changed to fit palettes with long names */
+    /* width: 210px;  /* firefox fix */
 }
 .palette_thumbnail_container {
     display: inline-block;
