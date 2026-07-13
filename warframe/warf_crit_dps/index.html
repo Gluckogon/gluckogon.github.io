@@ -71,15 +71,18 @@ const crt = new function () {
 
     function round(num, ndigits)
     {
-        return Math.round((num + Number.EPSILON) * 10**ndigits) / 10**ndigits
+        const divider = 10**ndigits
+        return Math.round((num + Number.EPSILON) * divider) / divider
     }
 
     function math_eval(str)
     {
-        const allowed_symbols = new Set(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '.', '(', ')', '+', '-', '*', '/', '%'])
+        const allowed_symbols = new Set([
+            '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.', 'e', 'E', ' ', '(', ')', '+', '-', '*', '/', '%'
+        ])
 
         for (const c of str) {
-            if (!c in allowed_symbols) {
+            if (!allowed_symbols.has(c)) {
                 return NaN
             }
         }
