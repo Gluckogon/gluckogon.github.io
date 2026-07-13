@@ -98,6 +98,7 @@ const crt = new function () {
     {
         document.getElementById('boost_crt_ch_expr').value = document.getElementById('base_crt_ch_expr').value
         document.getElementById('boost_crt_mlt_expr').value = document.getElementById('base_crt_mlt_expr').value
+
         calc_all()
     }
 
@@ -108,6 +109,7 @@ const crt = new function () {
         const crit_tier_next = Math.ceil(crit_chance)
         const crit_tier_next_chance = crit_chance - crit_tier_base
         const crit_tier_base_chance = 1 - crit_tier_next_chance
+
         return (
             non_crit_hits +
             crit_tier_base_chance * crit_tier_base * crit_mult +
@@ -139,8 +141,8 @@ const crt = new function () {
 
     function calc_difference()
     {
-        const base_dps_mult = math_eval(document.getElementById('base_dps_mult').value)
-        const boost_dps_mult = math_eval(document.getElementById('boost_dps_mult').value)
+        const base_dps_mult = Number(document.getElementById('base_dps_mult').value)
+        const boost_dps_mult = Number(document.getElementById('boost_dps_mult').value)
 
         document.getElementById('dps_diff').value = round(boost_dps_mult / base_dps_mult, 2)
     }
